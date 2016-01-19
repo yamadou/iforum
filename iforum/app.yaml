@@ -1,0 +1,58 @@
+application: itube
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+  
+- url: /stylesheets
+  static_dir: stylesheets
+  
+- url: /js
+  static_dir: js
+  
+- url: /images
+  static_dir: images
+
+
+
+- url: /static/fonts/(.*\.otf)
+  static_files: static/fonts/\1
+  upload: static/fonts/(.*\.otf)
+  mime_type: application/x-font-otf
+
+- url: /static/fonts/(.*\.ttf)
+  static_files: static/fonts/\1
+  upload: static/fonts/(.*\.ttf)
+  mime_type: application/x-font-ttf
+  
+- url: /static/fonts/(.*\.eot)
+  static_files: static/fonts/\1
+  upload: static/fonts/(.*\.eot)
+  mime_type: application/x-font-eot
+  
+- url: /static/fonts/(.*\.svg)
+  static_files: static/fonts/\1
+  upload: static/fonts/(.*\.svg)
+  mime_type: application/x-font-svg
+
+- url: /static/fonts/(.*\.wof)
+  static_files: static/fonts/\1
+  upload: static/fonts/(.*\.wof)
+  mime_type: application/x-font-wof
+
+- url: /static
+  static_dir: static
+  
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: latest
